@@ -28,13 +28,27 @@ const express = require('express');
 const cors = require('cors');
 
 const feedbackRoutes = require('./routes/feedback.routes');
+const authRoutes = require('./routes/auth.routes');
 
 const app = express();
 
+// Enable CORS for all incoming requests
 app.use(cors());
 
-// No body parser for json needed here since multer parses form-data
+// JSON parser for request bodies (important for API endpoints expecting JSON)
+app.use(express.json());
 
+// If you expect form-data with files (multer handles this inside routes)
+// No need to add bodyParser for multipart/form-data here globally
+
+// Mount API routes
 app.use('/api/feedback', feedbackRoutes);
+app.use('/api/auth', authRoutes);
+
+// Global error handler skeleton (optional but recommended)
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ error: 'Something went wrong!' });
+});
 
 module.exports = app;
