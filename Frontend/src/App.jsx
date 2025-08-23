@@ -4,6 +4,7 @@ import SignupPage from './components/SignupPage'
 import LandingPage from './components/Landing page'
 import Dashboard from './components/Dashboard'
 
+
 function App() {
   return (
     <Router>
@@ -12,6 +13,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        
       </Routes>
     </Router>
   )

@@ -1,8 +1,11 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import FeedbackForm from "./FeedbackForm";
 
 const LandingPage = () => {
-  // Sample data - in a real app, this would come from your backend
+  const [showFeedback, setShowFeedback] = useState(false);
+
+  // ...existing sample data...
   const stats = {
     treesPlanted: 127543,
     volunteersActive: 2456,
@@ -126,6 +129,35 @@ const LandingPage = () => {
         </div>
       </nav>
 
+      {/* Feedback Button */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 flex justify-end">
+        <button
+          className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded font-semibold transition-colors"
+          onClick={() => setShowFeedback(true)}
+        >
+          Give Feedback
+        </button>
+      </div>
+
+      {/* Feedback Form Modal */}
+ {showFeedback && (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
+    <div
+      className="bg-white rounded-lg shadow-lg p-6 max-w-lg w-full relative overflow-y-auto"
+      style={{ maxHeight: "90vh" }}
+    >
+      <button
+        className="absolute top-2 right-2 text-green-600 hover:text-green-800 text-xl font-bold"
+        onClick={() => setShowFeedback(false)}
+        aria-label="Close"
+      >
+        &times;
+      </button>
+      <FeedbackForm />
+    </div>
+  </div>
+)}
+
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-green-50 to-emerald-100 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -186,48 +218,37 @@ const LandingPage = () => {
       </section>
 
       {/* Upcoming Events */}
-<section className="py-16 bg-green-50">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    {/* Section Header */}
-    <div className="text-center mb-12">
-      <h2 className="text-4xl font-bold text-green-800 mb-4">Upcoming Events</h2>
-      <p className="text-green-600 text-lg">Join us in making a difference</p>
-    </div>
-
-    {/* Events Grid */}
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {upcomingEvents.map((event) => (
-        <div
-          key={event.id}
-          className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
-        >
-          <div className="p-6 flex flex-col items-center text-center h-full justify-between">
-            {/* Event Icon / Image */}
-            <div className="text-5xl mb-4">{event.image}</div>
-
-            {/* Event Title */}
-            <h3 className="text-xl font-bold text-green-800 mb-3">
-              {event.title}
-            </h3>
-
-            {/* Event Details */}
-            <div className="space-y-2 text-green-600 text-sm mb-4">
-              <div>📅 {event.date}</div>
-              <div>📍 {event.location}</div>
-              <div>👥 {event.participants} expected participants</div>
-            </div>
-
-            {/* CTA Button */}
-            <button className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg transition-colors">
-              Register Now
-            </button>
+      <section className="py-16 bg-green-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-green-800 mb-4">Upcoming Events</h2>
+            <p className="text-green-600 text-lg">Join us in making a difference</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {upcomingEvents.map((event) => (
+              <div
+                key={event.id}
+                className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
+              >
+                <div className="p-6 flex flex-col items-center text-center h-full justify-between">
+                  <div className="text-5xl mb-4">{event.image}</div>
+                  <h3 className="text-xl font-bold text-green-800 mb-3">
+                    {event.title}
+                  </h3>
+                  <div className="space-y-2 text-green-600 text-sm mb-4">
+                    <div>📅 {event.date}</div>
+                    <div>📍 {event.location}</div>
+                    <div>👥 {event.participants} expected participants</div>
+                  </div>
+                  <button className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg transition-colors">
+                    Register Now
+                  </button>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
-
+      </section>
 
       {/* Impact Areas */}
       <section className="py-16 bg-white">
