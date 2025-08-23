@@ -1,4 +1,8 @@
 # Logs
+
+
+Backend/.env
+
 logs
 *.log
 npm-debug.log*
@@ -24,4 +28,4 @@ dist-ssr
 *.sw?
 node_modules/
 
-.env
+
