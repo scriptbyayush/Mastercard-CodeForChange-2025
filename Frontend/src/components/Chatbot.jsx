@@ -181,74 +181,55 @@ Would you like to join our next tree planting drive? 🌱`;
 Could you please rephrase your question or ask about one of these specific areas? I'm here to help make your GreenEarth experience better! 🌱`;
   };
 
-  const handleSendMessage = async (message) => {
-    addMessage(message, 'user');
-    
-    // Add loading message
-    const loadingId = Date.now() + 1;
-    setMessages(prev => [...prev, {
-      id: loadingId,
-      type: 'loading',
-      content: '',
-      timestamp: new Date()
-    }]);
+ 
 
-    try {
-      // First try to use OpenAI API if key is available
-      const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
-      
-      if (apiKey && apiKey !== 'your-api-key-here') {
-        const response = await fetch('https://api.openai.com/v1/chat/completions', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${apiKey}`
-          },
-          body: JSON.stringify({
-            model: 'gpt-3.5-turbo',
-            messages: [
-              {
-                role: 'system',
-                content: `You are a helpful assistant for GreenEarth NGO, a tree plantation and environmental conservation organization. 
-                Help users understand their contribution impact, participation history, and format their feedback. 
-                Keep responses friendly, informative, and focused on environmental conservation.`
-              },
-              {
-                role: 'user',
-                content: message
-              }
-            ],
-            max_tokens: 300
-          })
-        });
 
-        if (response.ok) {
-          const data = await response.json();
-          const botResponse = data.choices[0]?.message?.content || 'I don\'t have an answer for that right now.';
-          
-          // Remove loading message and add bot response
-          setMessages(prev => prev.filter(msg => msg.id !== loadingId));
-          addMessage(botResponse, 'bot');
-          return;
-        }
-      }
-      
-      // Fallback to smart responses if API fails or no key
-      const smartResponse = getSmartResponse(message);
-      
-      // Remove loading message and add smart response
-      setMessages(prev => prev.filter(msg => msg.id !== loadingId));
-      addMessage(smartResponse, 'bot');
 
-    } catch (error) {
-      console.error('Chatbot error:', error);
-      
-      // Remove loading message and add smart response as fallback
-      setMessages(prev => prev.filter(msg => msg.id !== loadingId));
-      const smartResponse = getSmartResponse(message);
-      addMessage(smartResponse, 'bot');
-    }
-  };
+
+
+const handleSendMessage = async (message) => {
+  addMessage(message, 'user');
+  
+  const loadingId = Date.now() + 1;
+  setMessages(prev => [
+    ...prev,
+    { id: loadingId, type: 'loading', content: '', timestamp: new Date() }
+  ]);
+
+  try {
+    const response = await fetch('http://localhost:3001/ai/get-review', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ code: message }) // must match backend
+    });
+    const data = await response.json();
+    setMessages(prev => prev.filter(msg => msg.id !== loadingId));
+    addMessage(data.review || "Sorry, I couldn't get a response.", 'bot'); // match backend key
+  } catch (error) {
+    setMessages(prev => prev.filter(msg => msg.id !== loadingId));
+    addMessage("Error communicating with AI.", 'bot');
+  }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   console.log('Chatbot rendered, isOpen:', isOpen);
 
