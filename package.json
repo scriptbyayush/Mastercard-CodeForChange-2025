@@ -1,25 +1,104 @@
 {
 
-  
+  
+
   "name": "mastercard-codeforchange-2025",
+
+  
+
   "version": "1.0.0",
+
+  
+
   "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+
+  
+
   "main": "index.js",
+
+  
+
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+
+  
+
+    
+
+  "test": "echo \"Error: no test specified\" && exit 1"
+
+  
+
   },
+
+  
+
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/scriptbyayush/Mastercard-CodeForChange-2025.git"
+
+  
+
+    
+
+  "type": "git",
+
+  
+
+    
+
+  "url": "git+https://github.com/scriptbyayush/Mastercard-CodeForChange-2025.git"
+
+  
+
   },
+
+  
+
   "keywords": [],
+
+  
+
   "author": "",
+
+  
+
   "license": "ISC",
+
+  
+
   "bugs": {
-    "url": "https://github.com/scriptbyayush/Mastercard-CodeForChange-2025/issues"
+
+  
+
+    
+
+  "url": "https://github.com/scriptbyayush/Mastercard-CodeForChange-2025/issues"
+
+  
+
   },
+
+  
+
   "homepage": "https://github.com/scriptbyayush/Mastercard-CodeForChange-2025#readme",
+
+  
+
   "dependencies": {
-    "express": "^5.1.0"
+
+  
+
+    
+
+  "cloudinary": "^2.7.0",
+
+  
+
+    
+
+  "express": "^5.1.0"
+
+  
+
   }
+
 }
+
