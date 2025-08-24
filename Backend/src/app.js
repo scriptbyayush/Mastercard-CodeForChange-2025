@@ -29,6 +29,7 @@ const cors = require('cors');
 
 const feedbackRoutes = require('./routes/feedback.routes');
 const authRoutes = require('./routes/auth.routes');
+const analyticsRoutes = require('./routes/admin_analytics.routes');
 
 const app = express();
 
@@ -44,6 +45,7 @@ app.use(express.json());
 // Mount API routes
 app.use('/api/feedback', feedbackRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/activity', analyticsRoutes);
 
 // Global error handler skeleton (optional but recommended)
 app.use((err, req, res, next) => {
