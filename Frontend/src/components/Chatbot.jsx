@@ -8,7 +8,7 @@ const Chatbot = () => {
     {
       id: 1,
       type: 'bot',
-      content: 'Hello! I\'m your GreenEarth assistant. I can help you with:',
+      content: 'Hello! I\'m your GreenEarth  personal assistant. I can help you with:',
       timestamp: new Date()
     },
     {

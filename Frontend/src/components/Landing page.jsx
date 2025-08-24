@@ -124,6 +124,12 @@ const LandingPage = () => {
               >
                 Go to Dashboard
               </Link>
+              <Link 
+                to="/admin" 
+                className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
+              >
+                Admin Dashboard
+              </Link>
             </div>
           </div>
         </div>
