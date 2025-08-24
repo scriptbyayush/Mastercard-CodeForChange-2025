@@ -5,6 +5,7 @@ import LandingPage from "./components/Landing page"; // Corrected file name with
 import Dashboard from "./components/Dashboard";
 import Chatbot from "./components/Chatbot";
 import AdminDashboard from "./components/AdminDashboard";
+import FeedbackPage from "./components/FeedbackPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/feedback" element={<FeedbackPage />} />
       </Routes>
       <Chatbot />
     </Router>

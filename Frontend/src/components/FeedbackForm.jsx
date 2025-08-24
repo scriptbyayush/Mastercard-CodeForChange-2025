@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function FeedbackForm() {
   const [form, setForm] = useState({
@@ -57,13 +58,24 @@ export default function FeedbackForm() {
   }
 
   return (
-    <div className="max-w-lg mx-auto bg-white rounded-lg shadow-md p-8 mt-8">
+    <div className="mx-auto bg-green-50 rounded-lg shadow-md p-6">
       <h2 className="text-2xl font-bold text-green-700 mb-6 text-center">
         Tree Plantation Feedback Form
       </h2>
       {submitted ? (
-        <div className="text-green-700 text-lg text-center mt-8">
-          Thank you for your feedback!
+        <div className="text-center">
+          <div className="text-green-700 text-lg mb-6">
+            Thank you for your feedback! 🌱
+          </div>
+          <div className="text-green-600 mb-6">
+            Your valuable feedback helps us improve our tree plantation initiatives.
+          </div>
+          <Link
+            to="/"
+            className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200 shadow-md hover:shadow-lg"
+          >
+            Return to Home Page
+          </Link>
         </div>
       ) : (
         <>
@@ -72,7 +84,7 @@ export default function FeedbackForm() {
           )}
           <form onSubmit={handleSubmit}>
             {/* Form fields here same as before */}
-            <label className="block mb-4 font-medium">
+            <label className="block mb-4 font-medium text-green-700">
               Name:
               <input
                 type="text"
@@ -80,10 +92,10 @@ export default function FeedbackForm() {
                 value={form.name}
                 onChange={handleChange}
                 required
-                className="w-full mt-2 p-2 border border-green-300 rounded"
+                className="w-full mt-2 p-3 border border-green-300 rounded-lg bg-white focus:border-green-500 focus:ring-2 focus:ring-green-200"
               />
             </label>
-            <label className="block mb-4 font-medium">
+            <label className="block mb-4 font-medium text-green-700">
               Email:
               <input
                 type="email"
@@ -91,20 +103,20 @@ export default function FeedbackForm() {
                 value={form.email}
                 onChange={handleChange}
                 required
-                className="w-full mt-2 p-2 border border-green-300 rounded"
+                className="w-full mt-2 p-3 border border-green-300 rounded-lg bg-white focus:border-green-500 focus:ring-2 focus:ring-green-200"
               />
             </label>
-            <label className="block mb-4 font-medium">
+            <label className="block mb-4 font-medium text-green-700">
               Phone Number:
               <input
                 type="text"
                 name="phone"
                 value={form.phone}
                 onChange={handleChange}
-                className="w-full mt-2 p-2 border border-green-300 rounded"
+                className="w-full mt-2 p-3 border border-green-300 rounded-lg bg-white focus:border-green-500 focus:ring-2 focus:ring-green-200"
               />
             </label>
-            <label className="block mb-4 font-medium">
+            <label className="block mb-4 font-medium text-green-700">
               Date of Plantation:
               <input
                 type="date"
@@ -112,10 +124,10 @@ export default function FeedbackForm() {
                 value={form.date}
                 onChange={handleChange}
                 required
-                className="w-full mt-2 p-2 border border-green-300 rounded"
+                className="w-full mt-2 p-3 border border-green-300 rounded-lg bg-white focus:border-green-500 focus:ring-2 focus:ring-green-200"
               />
             </label>
-            <label className="block mb-4 font-medium">
+            <label className="block mb-4 font-medium text-green-700">
               Location of Plantation:
               <input
                 type="text"
@@ -123,10 +135,10 @@ export default function FeedbackForm() {
                 value={form.location}
                 onChange={handleChange}
                 required
-                className="w-full mt-2 p-2 border border-green-300 rounded"
+                className="w-full mt-2 p-3 border border-green-300 rounded-lg bg-white focus:border-green-500 focus:ring-2 focus:ring-green-200"
               />
             </label>
-            <label className="block mb-4 font-medium">
+            <label className="block mb-4 font-medium text-green-700">
               Number of Trees Planted:
               <input
                 type="number"
@@ -135,27 +147,27 @@ export default function FeedbackForm() {
                 onChange={handleChange}
                 required
                 min="1"
-                className="w-full mt-2 p-2 border border-green-300 rounded"
+                className="w-full mt-2 p-3 border border-green-300 rounded-lg bg-white focus:border-green-500 focus:ring-2 focus:ring-green-200"
               />
             </label>
-            <label className="block mb-4 font-medium">
+            <label className="block mb-4 font-medium text-green-700">
               Feedback/Comments:
               <textarea
                 name="comments"
                 value={form.comments}
                 onChange={handleChange}
                 required
-                className="w-full mt-2 p-2 border border-green-300 rounded"
+                className="w-full mt-2 p-3 border border-green-300 rounded-lg bg-white focus:border-green-500 focus:ring-2 focus:ring-green-200 min-h-[80px]"
               />
             </label>
-            <label className="block mb-4 font-medium">
+            <label className="block mb-4 font-medium text-green-700">
               Rating of Experience:
               <select
                 name="rating"
                 value={form.rating}
                 onChange={handleChange}
                 required
-                className="w-full mt-2 p-2 border border-green-300 rounded"
+                className="w-full mt-2 p-3 border border-green-300 rounded-lg bg-white focus:border-green-500 focus:ring-2 focus:ring-green-200"
               >
                 <option value="">Select</option>
                 <option value="1">1 - Poor</option>
@@ -165,10 +177,10 @@ export default function FeedbackForm() {
                 <option value="5">5 - Excellent</option>
               </select>
             </label>
-            <label className="block mb-4 font-medium">
+            <label className="block mb-4 font-medium text-green-700">
               Would you participate again?
               <div className="mt-2">
-                <label className="mr-6">
+                <label className="mr-6 text-green-600">
                   <input
                     type="radio"
                     name="participateAgain"
@@ -176,11 +188,11 @@ export default function FeedbackForm() {
                     checked={form.participateAgain === "Yes"}
                     onChange={handleChange}
                     required
-                    className="mr-2"
+                    className="mr-2 text-green-600 focus:ring-green-500"
                   />
                   Yes
                 </label>
-                <label>
+                <label className="text-green-600">
                   <input
                     type="radio"
                     name="participateAgain"
@@ -188,25 +200,25 @@ export default function FeedbackForm() {
                     checked={form.participateAgain === "No"}
                     onChange={handleChange}
                     required
-                    className="mr-2"
+                    className="mr-2 text-green-600 focus:ring-green-500"
                   />
                   No
                 </label>
               </div>
             </label>
-            <label className="block mb-4 font-medium">
+            <label className="block mb-4 font-medium text-green-700">
               Upload a Photo:
               <input
                 type="file"
                 name="photo"
                 accept="image/*"
                 onChange={handleChange}
-                className="w-full mt-2 p-2 border border-green-300 rounded"
+                className="w-full mt-2 p-3 border border-green-300 rounded-lg bg-white focus:border-green-500 focus:ring-2 focus:ring-green-200"
               />
             </label>
             <button
               type="submit"
-              className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded font-semibold mt-4 w-full"
+              className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold mt-4 w-full transition-colors duration-200 shadow-md hover:shadow-lg"
             >
               Submit Feedback
             </button>

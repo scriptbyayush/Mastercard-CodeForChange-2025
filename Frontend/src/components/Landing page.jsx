@@ -1,9 +1,7 @@
 import { Link } from 'react-router-dom';
-import React, { useState } from "react";
-import FeedbackForm from "./FeedbackForm";
+import React from "react";
 
 const LandingPage = () => {
-  const [showFeedback, setShowFeedback] = useState(false);
 
   // ...existing sample data...
   const stats = {
@@ -137,32 +135,13 @@ const LandingPage = () => {
 
       {/* Feedback Button */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 flex justify-end">
-        <button
+        <Link
+          to="/feedback"
           className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded font-semibold transition-colors"
-          onClick={() => setShowFeedback(true)}
         >
           Give Feedback
-        </button>
+        </Link>
       </div>
-
-      {/* Feedback Form Modal */}
- {showFeedback && (
-  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
-    <div
-      className="bg-white rounded-lg shadow-lg p-6 max-w-lg w-full relative overflow-y-auto"
-      style={{ maxHeight: "90vh" }}
-    >
-      <button
-        className="absolute top-2 right-2 text-green-600 hover:text-green-800 text-xl font-bold"
-        onClick={() => setShowFeedback(false)}
-        aria-label="Close"
-      >
-        &times;
-      </button>
-      <FeedbackForm />
-    </div>
-  </div>
-)}
 
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-green-50 to-emerald-100 py-20">
